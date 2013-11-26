@@ -4,7 +4,7 @@ ul {
 head,
 body {
   background-color: #000;
-  font-family: 'Droid Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: #fff;
   padding: 60px 60px;
 }
@@ -21,7 +21,7 @@ body h1 {
 head #content,
 body #content {
   width: 1260px;
-  height: 660px;
+  height: 100%;
   margin: 0px;
   padding: 0px;
 }
