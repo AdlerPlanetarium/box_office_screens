@@ -65,6 +65,7 @@ class Calendar
 
   gotShowTimes:=>
     for show, times of  @showTimes
+      times = (time.StartDateTime for time in times when time.Avaliable > 0 )
       if show == "Space Junk 3D"
         times = (time for time in times when time != "Nov 4 2013 10:30:00:000AM" )
       @showTimes[show] = (moment( time ,"MMM DD YYYY HH:mm:ss:SSSA").local()  for time in times)

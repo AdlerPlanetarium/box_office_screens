@@ -32,7 +32,7 @@ $(document).ready ->
 
 	cal.getShowTimes =>
 
-		shows = cal.showTimesForDay moment().subtract('hours', 5)
+		shows = cal.showTimesForDay moment()
 		
 		console.log  "shows are ",shows 
 		(console.log show for show, times of shows)
@@ -41,7 +41,7 @@ $(document).ready ->
 
 			theaterDiv = $("##{theater.split(" ")[0].toLowerCase()}_shows")
 			for show in showList
-				times = (time.format("hh:mm a") for time in (shows[show] || []) ).join(", ")
+				times = (time.format("h:mm a") for time in (shows[show] || []) ).join(", ")
 				
 				if times 
 					console.log times 
