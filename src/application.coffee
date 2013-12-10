@@ -17,7 +17,7 @@ showLocations=
 	],
 	
 	"Guided Tours": [
-		"Beyond The Dome"
+		"Beyond the Dome Guided Tour"
 	]
 
 
@@ -25,27 +25,30 @@ showLocations=
 $(document).ready ->
 	cal = new Calendar()
 
+	
+	time_shift = parseInt(window.location.hash.replace("#","")) || 0
+
 	setInterval =>
-		$(".current-date").html(moment().format("dddd, MMMM, YYYY"))
+		$(".current-date").html(moment().format("dddd, MMMM D, YYYY"))
 		$(".current-time").html(moment().format("hh:mm a"))
+
 	, 200
 
-	cal.getShowTimes =>
 
-		shows = cal.showTimesForDay moment()
-		
-		console.log  "shows are ",shows 
-		(console.log show for show, times of shows)
-		console.log showLocations
-		for theater, showList of showLocations
+	update_show_times = =>
+		cal.getShowTimes =>
 
-			theaterDiv = $("##{theater.split(" ")[0].toLowerCase()}_shows")
-			for show in showList
-				times = (time.format("h:mm a") for time in (shows[show] || []) ).join(", ")
-				
-				if times 
-					console.log times 
-					theaterDiv.append("<p class='show'>#{show}</p>")
-					theaterDiv.append("<p class='times'> #{times}</p>")
-				# ("<span class='showtime'>#{moment(time).format('h:mm a')}</span>" for show, times of shows)
+			shows = cal.showTimesForDay moment()
+			
+			for theater, showList of showLocations
+				theaterDiv = $("##{theater.split(" ")[0].toLowerCase()}_shows")
+				theaterDiv.html("")
+				for show in showList
+					times = ( "<span 	class=' time #{ if time.isAfter(moment().subtract("hours",time_shift)) then "active" else "" }' > #{time.format('h:mm a')}</span>" for time in (shows[show] || [])).join(", ")
+					if times 
+						theaterDiv.append("<div class='show_container'> <p class='show'>#{show}</p><p class='times'> #{times} </p> </div>")
+						
+
+	update_show_times()
+	# setInterval update_show_times, 600
 					
