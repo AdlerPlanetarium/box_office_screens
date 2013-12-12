@@ -31,13 +31,11 @@ $(document).ready ->
 	setInterval =>
 		$(".current-date").html(moment().format("dddd, MMMM D, YYYY"))
 		$(".current-time").html(moment().format("hh:mm a"))
-
 	, 200
 
 
 	update_show_times = =>
 		cal.getShowTimes =>
-
 			shows = cal.showTimesForDay moment()
 			
 			for theater, showList of showLocations
@@ -50,5 +48,5 @@ $(document).ready ->
 						
 
 	update_show_times()
-	# setInterval update_show_times, 600
+	setInterval update_show_times, 600
 					
