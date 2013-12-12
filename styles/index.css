@@ -16,6 +16,7 @@ body body {
   padding: 20px 60px 60px 60px;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  cursor: none;
 }
 html header,
 body header {
@@ -25,6 +26,7 @@ body header {
   margin: 0px 0px 35px 0px;
   border-bottom: 3px solid #fff;
   position: relative;
+  cursor: none;
 }
 html h1,
 body h1 {
@@ -33,6 +35,7 @@ body h1 {
   font-size: 65px;
   margin: 0px;
   padding: 0px;
+  cursor: none;
 }
 html .current-time,
 body .current-time {
@@ -56,6 +59,7 @@ body #content {
   overflow: hidden;
   margin: 0px;
   padding: 0px;
+  cursor: none;
 }
 html #content .col,
 body #content .col {
