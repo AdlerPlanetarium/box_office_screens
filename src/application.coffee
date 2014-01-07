@@ -3,7 +3,7 @@ showLocations=
 	"Definiti Space Theater" :[
 		"One World, One Sky: Big Bird's Adventure",
 		"Earth, Moon & Sun",
-		"Winter Sky Live!",
+		"Night Sky Live!",
 		"Undiscovered Worlds"
 	],
 	"Granger Sky Theater":[
@@ -33,20 +33,26 @@ $(document).ready ->
 		$(".current-time").html(moment().format("hh:mm a"))
 	, 200
 
+	setTimeout =>
+		location.reload()
+	, 10*60*1000
 
 	update_show_times = =>
 		cal.getShowTimes =>
-			shows = cal.showTimesForDay moment()
+	
+	update_screen = =>
+		shows = cal.showTimesForDay moment()
 			
-			for theater, showList of showLocations
-				theaterDiv = $("##{theater.split(" ")[0].toLowerCase()}_shows")
-				theaterDiv.html("")
-				for show in showList
-					times = ( "<span 	class=' time #{ if time.isAfter(moment().subtract("hours",time_shift)) then "active" else "" }' > #{time.format('h:mm a')}</span>" for time in (shows[show] || [])).join(", ")
-					if times 
-						theaterDiv.append("<div class='show_container'> <p class='show'>#{show}</p><p class='times'> #{times} </p> </div>")
-						
+		for theater, showList of showLocations
+			theaterDiv = $("##{theater.split(" ")[0].toLowerCase()}_shows")
+			theaterDiv.html("")
+			for show in showList
+				times = ( "<span 	class=' time #{ if time.isAfter(moment().subtract("hours",time_shift)) then "active" else "" }' > #{time.format('h:mm a')}</span>" for time in (shows[show] || [])).join(", ")
+				if times 
+					theaterDiv.append("<div class='show_container'> <p class='show'>#{show}</p><p class='times'> #{times} </p> </div>")
+					
 
 	update_show_times()
-	setInterval update_show_times, 600
+	setInterval update_show_times, 20000
+	setInterval update_screen, 1000
 					

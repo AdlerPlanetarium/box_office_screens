@@ -14,7 +14,7 @@ class Calendar
   updatePageTimes:=>
     hours        = @getOpenHours()
     weekdayHours = @openHours().hours[@session()].weekday
-    weekendHours = @openHours().hours[@session()].weekend
+    weekendHours = @openHours().hours[@session()].weekend 
 
     if hours != "closed"
       shopHours  = "#{hours.shopOpen} - #{hours.shopClose}"
@@ -59,12 +59,12 @@ class Calendar
         @gotShowTimes()    
         cb() if cb?
       error: =>
-        @showTimes = []
-        @gotShowTimes()
+        @showTimes ||= []
+        # @gotShowTimes()
         cb() if cb?
 
   gotShowTimes:=>
-    console.log "show times new ", @showTimes
+    # console.log "show times new ", @showTimes
     for show, times of  @showTimes
       times = (time.StartDateTime for time in times when time.Available > 0 )
       if show == "Space Junk 3D"
@@ -73,7 +73,7 @@ class Calendar
 
   showTimesForDay:(day)=>
     dayTimes = {}
-    console.log "show times in cal are", @showTimes
+    # console.log "show times in cal are", @showTimes
     for show,times of @showTimes
       dayTimes[show] = (time for time in times when time.isSame(day, 'day'))
     dayTimes
