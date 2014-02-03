@@ -1,7 +1,7 @@
 
 showLocations=
 	"Definiti Space Theater" :[
-		"One World, One Sky: Big Bird's Adventure",
+		"One World, One Sky; Big Bird's Adventure",
 		"Earth, Moon & Sun",
 		"Night Sky Live!",
 		"Undiscovered Worlds"
@@ -33,9 +33,10 @@ $(document).ready ->
 		$(".current-time").html(moment().format("hh:mm a"))
 	, 200
 
-	setTimeout =>
-		location.reload()
-	, 10*60*1000
+	# setTimeout =>
+		# if hostReachable()
+			# location.reload()
+	# , 10*60*1000
 
 	update_show_times = =>
 		cal.getShowTimes =>
