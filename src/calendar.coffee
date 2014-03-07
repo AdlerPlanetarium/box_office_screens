@@ -65,6 +65,8 @@ class Calendar
 
   gotShowTimes:=>
     # console.log "show times new ", @showTimes
+    @showTimes["Maravilla C&#243smica"] = @showTimes["Maravilla Cósmica"] || []
+
     for show, times of  @showTimes
       times = (time.StartDateTime for time in times when time.Available > 0 )
       if show == "Space Junk 3D"

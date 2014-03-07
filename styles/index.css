@@ -74,12 +74,12 @@ body #content .col h2 {
 }
 html .show_container,
 body .show_container {
-  min-height: 100px;
+  min-height: 30px;
   margin-bottom: 20px;
 }
 html .show,
 body .show {
-  font-size: 37px;
+  font-size: 23px;
   margin: 0px;
   padding: 10px 0px;
   width: 90%;
