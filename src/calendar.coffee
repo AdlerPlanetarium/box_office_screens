@@ -56,6 +56,10 @@ class Calendar
 
       success: (times)=>
         @showTimes = times
+
+        for show, extra_times of window.extra_shows
+          @showTimes[show] = extra_times
+
         @gotShowTimes()    
         cb() if cb?
       error: =>
@@ -65,12 +69,14 @@ class Calendar
 
   gotShowTimes:=>
     # console.log "show times new ", @showTimes
-    @showTimes["Maravilla C&#243smica"] = @showTimes["Maravilla Cósmica"] || []
+    # @showTimes["Maravilla C&#243smica"] = @showTimes["Maravilla Cósmica"] || []
+    @showTimes["Maravilla Cósmica"] = []
 
     for show, times of  @showTimes
       times = (time.StartDateTime for time in times when time.Available > 0 )
       if show == "Space Junk 3D"
         times = (time for time in times when time != "Nov 4 2013 10:30:00:000AM" )
+      
       @showTimes[show] = (moment( time ,"MMM DD YYYY HH:mm:ss:SSSA").local()  for time in times)
 
   showTimesForDay:(day)=>
