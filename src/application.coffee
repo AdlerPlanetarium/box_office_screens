@@ -7,7 +7,6 @@ showLocations=
         "Night Sky Live!",
         "Undiscovered Worlds",
         "Vuelta definitiva a la Luna",
-        "Back to the Moon for Good",
         "Un Mundo, Un Cielo",
         "Estrellas que Explotan",
         "Exploding Stars",
