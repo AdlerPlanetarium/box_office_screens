@@ -71,19 +71,22 @@ class Calendar
     # console.log "show times new ", @showTimes
     # @showTimes["Maravilla C&#243smica"] = @showTimes["Maravilla Cósmica"] || []
     @showTimes["Maravilla Cósmica"] = []
+    console.log @showTimes
 
     for show, times of  @showTimes
-      times = (time.StartDateTime for time in times when time.Available > 0 )
-      if show == "Space Junk 3D"
-        times = (time for time in times when time != "Nov 4 2013 10:30:00:000AM" )
+      times = ({time: moment( time.StartDateTime ,"MMM DD YYYY HH:mm:ss:SSSA").local() , available: ( time.Available > 0 ), theater:(time.ResourceID)} for time in times when time.Available > 0 )
+
+      # if show == "Space Junk 3D"
+      #   times = (time for time in times when time != "Nov 4 2013 10:30:00:000AM" )
       
-      @showTimes[show] = (moment( time ,"MMM DD YYYY HH:mm:ss:SSSA").local()  for time in times)
+      @showTimes[show] = times
+      window.showtimes = @showTimes
 
   showTimesForDay:(day)=>
     dayTimes = {}
     # console.log "show times in cal are", @showTimes
     for show,times of @showTimes
-      dayTimes[show] = (time for time in times when time.isSame(day, 'day'))
+      dayTimes[show] = (time for time in times when time.time.isSame(day, 'day'))
     dayTimes
 
   todaysShowTimes:=>
