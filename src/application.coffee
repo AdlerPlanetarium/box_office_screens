@@ -27,6 +27,15 @@ $(document).ready ->
 
     update_show_times = =>
         cal.getShowTimes =>
+
+    show_active_conditions =(show,show_name) =>
+        active = false 
+        if show.time.isAfter(moment().subtract("hours",time_shift)) and show.available > 0  and show.EventTypeID == 1 
+            active = true
+
+        if show_name == "What’s Up"
+            active = false 
+        active
     
     update_screen = =>
         showsList = cal.showTimesForDay moment()
@@ -39,7 +48,7 @@ $(document).ready ->
             theater = showLocations[shows[0].theater]
             if theater
                 theaterDiv = $("##{theater.split(" ")[0].toLowerCase()}_shows")
-                times = ( "<span class=' time #{ if show.time.isAfter(moment().subtract("hours",time_shift)) and show.available  then "active" else "" }' > #{show.time.format('h:mm a')}</span>" for show in shows || []).join(", ")
+                times = ( "<span class=' time #{ if show_active_conditions(show,show_name) then "active" else "" }' > #{show.time.format('h:mm a')}</span>" for show in shows || []).join(", ")
                 if times 
                     theaterDiv.append("<div class='show_container'> <p class='show'>#{show_name}</p><p class='times'> #{times} </p> </div>")
 
