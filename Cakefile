@@ -16,4 +16,4 @@ task 'compile:coffee', 'Compile the CoffeeScript files', ->
 
 task 'compile:stylus', 'Compile the Stylus files', ->
   console.log 'Compiling Stylus files...'
-  run 'stylus styles/ --out styles '`
+  run 'stylus styles/ --out styles '
