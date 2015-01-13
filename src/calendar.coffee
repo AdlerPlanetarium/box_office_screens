@@ -71,10 +71,10 @@ class Calendar
     # console.log "show times new ", @showTimes
     # @showTimes["Maravilla C&#243smica"] = @showTimes["Maravilla Cósmica"] || []
     @showTimes["Maravilla Cósmica"] = []
-    console.log @showTimes
+    # console.log @showTimes
 
     for show, times of  @showTimes
-      times = ({time: moment( time.StartDateTime ,"MMM DD YYYY HH:mm:ss:SSSA").local() , available: ( time.Available > 0 ), theater:(time.ResourceID)} for time in times when time.Available > 0 )
+      times = ({time: moment( time.StartDateTime ,"MMM DD YYYY HH:mm:ss:SSSA").local() , available: ( time.Available  ), theater:(time.ResourceID),  eventType: (time.EventTypeID)} for time in times  )
 
       # if show == "Space Junk 3D"
       #   times = (time for time in times when time != "Nov 4 2013 10:30:00:000AM" )
