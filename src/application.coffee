@@ -3,7 +3,7 @@ showLocations=
 	"Definiti Space Theater" :[
 		"One World, One Sky; Big Bird's Adventure",
 		"Earth, Moon & Sun",
-		"Night Sky Live!",
+		"Skywatch Live",
 		"Undiscovered Worlds"
 	],
 	"Granger Sky Theater":[
