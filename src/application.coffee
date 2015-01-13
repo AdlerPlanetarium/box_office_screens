@@ -8,7 +8,8 @@ showLocations=
 	],
 	"Granger Sky Theater":[
 	  "Welcome To The Universe",
-	  "Cosmic Wonder"
+	  "Cosmic Wonder", 
+    "Destination Solar System"
 	],
 	
 	"Johnson Star Theater" :[
