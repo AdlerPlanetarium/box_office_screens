@@ -51,7 +51,7 @@ class Calendar
   getShowTimes:(cb=null)=>
     $.ajax
       dataType: "json"
-      url: "#{window.location.protocol}//adlersiteserver.herokuapp.com/show_times?callback=?"
+      url: "#{window.location.protocol}//s3.amazonaws.com/adler-cache/show_times.json"
       timeout : 10000
 
       success: (times)=>
