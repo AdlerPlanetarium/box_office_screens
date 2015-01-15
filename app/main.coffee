@@ -1,4 +1,4 @@
-
+Calendar = require './calendar'
 
 showLocations=
     1  : "Granger Sky Theater" ,

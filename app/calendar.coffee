@@ -206,5 +206,4 @@ class Calendar
     for templateName, text of @templates
       @cTemplates[templateName] = _.template(text)
 
-
-window.Calendar = Calendar
+module.exports = Calendar
