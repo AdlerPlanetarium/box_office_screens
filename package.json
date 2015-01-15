@@ -4,5 +4,10 @@
   "dependencies": {
     "publisssh": "0.2.6",
     "haw": "0.5.0"
+  },
+  "scripts": {
+    "start": "haw serve",
+    "deploy-to-staging": "haw build && publisssh --config staging-deploy.coffee && rm -rf ./build",
+    "deploy": "haw build && publisssh --config production-deploy.coffee && rm -rf ./build"
   }
 }
