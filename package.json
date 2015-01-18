@@ -2,7 +2,7 @@
   "name": "box_office_screens",
   "version": "0.0.1",
   "dependencies": {
-    "publisssh": "0.2.6",
+    "publisssh": "0.2.5",
     "haw": "0.5.0"
   },
   "scripts": {
